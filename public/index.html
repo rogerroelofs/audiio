@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Audio Transcription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .transcript-container {
+            margin: 20px 0;
+        }
+        .transcript-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1em;
+            line-height: 1.5;
+            resize: vertical;
+        }
+        #processedTranscription {
+            background-color: #f9f9f9;
+        }
+        .transcript-textarea:focus {
+            outline: none;
+            border-color: #2196F3;
+            box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+        }
+        .transcript-textarea:disabled {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+            color: #666;
+        }
+        .button-container {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+        #toggleButton, #processButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        #toggleButton {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #toggleButton.recording {
+            background-color: #f44336;
+        }
+        #processButton {
+            background-color: #2196F3;
+            color: white;
+        }
+        #processButton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #status {
+            margin: 10px 0;
+            color: #666;
+        }
+        .section-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .word-count {
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Audio Transcription</h1>
+    <div class="button-container">
+        <button id="toggleButton">Start Recording</button>
+        <button id="processButton" disabled>Process with AI</button>
+    </div>
+    <div id="status">Status: Ready</div>
+    
+    <div class="transcript-container">
+        <div class="section-label">
+            <span>Original Transcription:</span>
+            <span class="word-count" id="originalWordCount">Words: 0</span>
+        </div>
+        <textarea id="transcription" class="transcript-textarea" placeholder="Transcription will appear here..." disabled></textarea>
+    </div>
+
+    <div class="transcript-container">
+        <div class="section-label">
+            <span>Processed Transcription:</span>
+            <span class="word-count" id="processedWordCount">Words: 0</span>
+        </div>
+        <textarea id="processedTranscription" class="transcript-textarea" placeholder="AI-processed text will appear here..." disabled></textarea>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
